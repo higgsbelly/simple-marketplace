@@ -17,7 +17,7 @@
 .walletConnect {
   display: flex;
   justify-content: flex-end; /* Right-align items */
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .nftContainer {

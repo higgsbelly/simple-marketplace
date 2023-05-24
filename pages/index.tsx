@@ -22,7 +22,8 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           SOVRN AUCTION MARKETPLACE
         </h1>
-        <ConnectWallet />
+        <h2><ConnectWallet /></h2>
+        
         {!loadingAuction ?
           (
             <div>
