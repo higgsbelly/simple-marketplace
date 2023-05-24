@@ -27,19 +27,19 @@ const Home: NextPage = () => {
           (
             <div>
               {auctionListing && auctionListing.map((nft) => {
-                
-
                 return (
-                  <div key={nft.id}>
-                    <MediaRenderer
-                      src={nft.asset.image}
-                      height="500px"
-                      width="500px"
-                    />
-                    <p>{nft.asset.name}</p>
-                    <MinBid contractAddress="0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc" listingId={nft.id} />
-
-                    
+                  <div key={nft.id} className={styles.nftContainer}>
+                    <div className={styles.imageContainer}>
+                      <MediaRenderer
+                        src={nft.asset.image}
+                        height="500px"
+                        width="500px"
+                      />
+                    </div>
+                    <div className={styles.textContainer}>
+                      <p>{nft.asset.name}</p>
+                      <MinBid contractAddress="0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc" listingId={nft.id} />
+                    </div>
                   </div>
                 );
               })}
@@ -47,7 +47,6 @@ const Home: NextPage = () => {
           ) : (
             <div>Loading...</div>
           )}
-
       </main>
     </div>
   );
