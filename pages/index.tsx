@@ -1,52 +1,53 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, MediaRenderer, useContract, useValidEnglishAuctions, useMinimumNextBid } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
+import { NFT } from "@thirdweb-dev/sdk";
+import MinBid from "../components/MinBid"
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const { contract: marketplace, isLoading: loadingContract } = useContract(
+    '0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc',
+    "marketplace-v3"
+  );
+
+  const { data: auctionListing, isLoading: loadingAuction } =
+    useValidEnglishAuctions(marketplace, {
+      tokenContract: '0xfAFD72c9656018a60520DEb643c74eedA8199e2C',
+    });
+
+  
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="http://thirdweb.com/">thirdweb</a>!
+          SOVRN AUCTION MARKETPLACE
         </h1>
+        <ConnectWallet />
+        {!loadingAuction ?
+          (
+            <div>
+              {auctionListing && auctionListing.map((nft) => {
+                
 
-        <p className={styles.description}>
-          Get started by configuring your desired network in{" "}
-          <code className={styles.code}>pages/_app.tsx</code>, then modify the{" "}
-          <code className={styles.code}>pages/index.tsx</code> file!
-        </p>
+                return (
+                  <div key={nft.id}>
+                    <MediaRenderer
+                      src={nft.asset.image}
+                      height="500px"
+                      width="500px"
+                    />
+                    <p>{nft.asset.name}</p>
+                    <MinBid contractAddress="0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc" listingId={nft.id} />
 
-        <div className={styles.connect}>
-          <ConnectWallet />
-        </div>
+                    
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>Loading...</div>
+          )}
 
-        <div className={styles.grid}>
-          <a href="https://portal.thirdweb.com/" className={styles.card}>
-            <h2>Portal &rarr;</h2>
-            <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
-            </p>
-          </a>
-
-          <a href="https://thirdweb.com/dashboard" className={styles.card}>
-            <h2>Dashboard &rarr;</h2>
-            <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
-            </p>
-          </a>
-
-          <a
-            href="https://portal.thirdweb.com/templates"
-            className={styles.card}
-          >
-            <h2>Templates &rarr;</h2>
-            <p>
-              Discover and clone template projects showcasing thirdweb features.
-            </p>
-          </a>
-        </div>
       </main>
     </div>
   );
