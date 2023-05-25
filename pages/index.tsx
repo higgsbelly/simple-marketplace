@@ -1,4 +1,4 @@
-import { ConnectWallet, MediaRenderer, useContract, useValidEnglishAuctions, useMinimumNextBid} from "@thirdweb-dev/react";
+import { ConnectWallet, MediaRenderer, useContract, useValidEnglishAuctions, useMinimumNextBid, useContractEvents} from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { NFT } from "@thirdweb-dev/sdk";
 import MinBid from "../components/MinBid"
@@ -15,6 +15,8 @@ const Home: NextPage = () => {
     useValidEnglishAuctions(contract, {
       tokenContract: '0xfAFD72c9656018a60520DEb643c74eedA8199e2C',
     });
+    
+  const { data: bids, isLoading } = useContractEvents(contract, "NewBid");
 
   const [bidValue, setBidValue] = useState(""); // State variable to hold the bid value
 
