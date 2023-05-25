@@ -16,6 +16,9 @@ const Home: NextPage = () => {
       tokenContract: '0xfAFD72c9656018a60520DEb643c74eedA8199e2C',
     });
 
+  const [bidValue, setBidValue] = useState(""); // State variable to hold the bid value
+
+
   
   return (
     <div className={styles.container}>
@@ -43,10 +46,19 @@ const Home: NextPage = () => {
                       <p>{nft.asset.name}</p>
                       <MinBid contractAddress="0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc" listingId={nft.id} />
                       <p>
-                      <button
+                        <input
+                          type="text"
+                          value={bidValue}
+                          onChange={(e) => setBidValue(e.target.value)}
+                          placeholder="Enter bid value"
+                        />
+                        <button
                           onClick={async () => {
                             try {
-                              await contract?.englishAuctions.makeBid(nft.id, 0.05);
+                              await contract?.englishAuctions.makeBid(
+                                nft.id,
+                                parseFloat(bidValue)
+                              );
                             } catch (error) {
                               console.error(error);
                               alert(error);
