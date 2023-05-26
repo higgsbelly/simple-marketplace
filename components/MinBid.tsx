@@ -7,7 +7,7 @@ type MinBidProps = {
 };
 
 export default function MinBid({ contractAddress, listingId }: MinBidProps) {
-  const { contract } = useContract(contractAddress, 'marketplace');
+  const { contract } = useContract(contractAddress, 'marketplace-v3');
   const { data, isLoading } = useMinimumNextBid(contract, listingId);
 
   // Render the component
@@ -16,7 +16,7 @@ export default function MinBid({ contractAddress, listingId }: MinBidProps) {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <p>Minimum Next Bid: {data?.displayValue}</p>
+        <p>Minimum Next Bid: {data?.displayValue}  ETH</p>
       )}
     </div>
   );

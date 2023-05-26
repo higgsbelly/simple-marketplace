@@ -39,6 +39,7 @@
 
 .textContainer p {
   margin: 0;
+  margin-bottom: 10px; /* Add desired spacing between paragraphs */
 }
 
 @media (max-width: 600px) {

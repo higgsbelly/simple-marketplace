@@ -3,7 +3,8 @@ import type { NextPage } from "next";
 import { NFT } from "@thirdweb-dev/sdk";
 import MinBid from "../components/MinBid";
 import styles from "../styles/Home.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   const { contract, isLoading: loadingContract } = useContract(
@@ -16,7 +17,9 @@ const Home: NextPage = () => {
       tokenContract: '0xfAFD72c9656018a60520DEb643c74eedA8199e2C',
     });
 
-  const { data: bids, isLoading } = useContractEvents(contract, "NewBid");
+  
+
+  
 
   const [bidValues, setBidValues] = useState<Record<string, string>>({}); // State variable to hold bid values for each listing
 
@@ -27,15 +30,23 @@ const Home: NextPage = () => {
     }));
   };
 
+  
+
+  
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>SOVRN AUCTION MARKETPLACE</h1>
+        <h1 className={styles.title}>SOVRN AUCTION</h1>
         <h2>
           <ConnectWallet />
         </h2>
+        <Link href="/bids">
+         Bidding Log
+        </Link>
+        <p></p>
 
-        {!loadingAuction ? (
+        {!loadingAuction  ? (
           <div>
             {auctionListing &&
               auctionListing.map((nft) => {
@@ -53,6 +64,8 @@ const Home: NextPage = () => {
                     </div>
                     <div className={styles.textContainer}>
                       <p>{nft.asset.name}</p>
+                      <p>Listing Id#  {listingId}</p>
+                      
                       <MinBid
                         contractAddress="0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc"
                         listingId={listingId}
