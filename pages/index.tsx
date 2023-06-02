@@ -46,11 +46,11 @@ const Home: NextPage = () => {
         <h2>
           <ConnectWallet />
         </h2>
-        <Link href="/bids">
+        <Link className={styles.aREF} href="/bids">
          Bidding Log
         </Link> 
         <p></p>
-        <a href={`https://www.sovrn.art/auction`}> Artist Statement</a>
+        <a className={styles.aREF} href={`https://www.sovrn.art/auction`}> Artist Statement</a>
         <p></p>
 
         {!loadingAuction  ? (
@@ -71,7 +71,7 @@ const Home: NextPage = () => {
                     </div>
                     <div className={styles.textContainer}>
                       <p>{nft.asset.name} #{nft.asset.id}</p>
-                      <a href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View Traits</a>
+                      <a className={styles.aREF} href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View Traits</a>
                       <p></p>
                       <p>Listing Id#  {listingId} </p>
                       <p></p>

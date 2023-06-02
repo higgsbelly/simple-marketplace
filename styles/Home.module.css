@@ -42,6 +42,10 @@
   margin-bottom: 10px; /* Add desired spacing between paragraphs */
 }
 
+.aREF {
+  color: #00ff00; /* Change the link color to blue */
+}
+
 @media (max-width: 600px) {
   .nftContainer {
     flex-direction: column;
