@@ -77,6 +77,8 @@ const Home: NextPage = () => {
                       <p></p>
                       <p>Starting Bid {nft.minimumBidCurrencyValue.displayValue} ETH</p>
                       <p></p>
+                      <p>Bidding Buffer {nft.bidBufferBps/100} %</p>
+                      <p></p>
                       <p>End Time: {(new Date(nft.endTimeInSeconds*1000)).toUTCString()}</p>
                       
                       <MinBid
