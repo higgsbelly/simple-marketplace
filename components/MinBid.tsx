@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContract, useMinimumNextBid } from '@thirdweb-dev/react';
+import { useContract, useEnglishAuctionWinningBid, useMinimumNextBid } from '@thirdweb-dev/react';
 
 type MinBidProps = {
   contractAddress: string;
@@ -8,7 +8,7 @@ type MinBidProps = {
 
 export default function MinBid({ contractAddress, listingId }: MinBidProps) {
   const { contract } = useContract(contractAddress, 'marketplace-v3');
-  const { data, isLoading } = useMinimumNextBid(contract, listingId);
+  const { data, isLoading } = useEnglishAuctionWinningBid(contract, listingId);
 
   // Render the component
   return (
@@ -16,7 +16,7 @@ export default function MinBid({ contractAddress, listingId }: MinBidProps) {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <p>Minimum Next Bid: {data?.displayValue}  ETH</p>
+        <p>Highest Bid: {data?.bidAmountCurrencyValue.displayValue}  ETH  Address: {data?.bidderAddress}</p>
       )}
     </div>
   );

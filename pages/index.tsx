@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
   const { data: auctionListing, isLoading: loadingAuction } =
     useValidEnglishAuctions(contract, {
-      tokenContract: '0xfAFD72c9656018a60520DEb643c74eedA8199e2C',
+      tokenContract: '0x87Da71177e6335D72bde9cf2F0dac41d5C26aD8A',
     });
 
   
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
                       />
                     </div>
                     <div className={styles.textContainer}>
-                      <p>{nft.asset.name}</p>
+                      <p>{nft.asset.name} #{nft.asset.id}</p>
                       <p>Listing Id#  {listingId}</p>
                       
                       <MinBid
