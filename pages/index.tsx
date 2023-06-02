@@ -71,6 +71,8 @@ const Home: NextPage = () => {
                       <a href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View Traits</a>
                       <p></p>
                       <p>Listing Id#  {listingId}</p>
+                      <p></p>
+                      <p>End Time: {(new Date(nft.endTimeInSeconds*1000)).toUTCString()}</p>
                       
                       <MinBid
                         contractAddress="0xBaEB0b96e104E7B067D0Ce32AF1c1E177403d20B"
