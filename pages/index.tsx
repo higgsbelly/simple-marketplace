@@ -1,4 +1,4 @@
-import { ConnectWallet, MediaRenderer, useContract, useValidEnglishAuctions, useMinimumNextBid, useContractEvents } from "@thirdweb-dev/react";
+import { ConnectWallet, MediaRenderer, useContract, useValidEnglishAuctions, useNFT } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { NFT } from "@thirdweb-dev/sdk";
 import MinBid from "../components/MinBid";
@@ -6,15 +6,19 @@ import styles from "../styles/Home.module.css";
 import React, { useState, useEffect} from "react";
 import Link from 'next/link';
 
+const NFT_TOKEN_CONTRACT = "0xaa4bc994775a0d19Ff1c01310191Df6521af12dD";
+
 const Home: NextPage = () => {
   const { contract, isLoading: loadingContract } = useContract(
-    '0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc',
+    '0xBaEB0b96e104E7B067D0Ce32AF1c1E177403d20B',
     "marketplace-v3"
   );
 
+  
+
   const { data: auctionListing, isLoading: loadingAuction } =
     useValidEnglishAuctions(contract, {
-      tokenContract: '0x87Da71177e6335D72bde9cf2F0dac41d5C26aD8A',
+      tokenContract: '0xaa4bc994775a0d19Ff1c01310191Df6521af12dD',
     });
 
   
@@ -64,13 +68,16 @@ const Home: NextPage = () => {
                     </div>
                     <div className={styles.textContainer}>
                       <p>{nft.asset.name} #{nft.asset.id}</p>
+                      <a href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View Traits</a>
+                      <p></p>
                       <p>Listing Id#  {listingId}</p>
                       
                       <MinBid
-                        contractAddress="0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc"
+                        contractAddress="0xBaEB0b96e104E7B067D0Ce32AF1c1E177403d20B"
                         listingId={listingId}
                       />
                       <p>
+                      
                         <input
                           type="text"
                           value={bidValue}

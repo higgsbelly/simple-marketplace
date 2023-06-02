@@ -3,7 +3,7 @@ import { useContract, useContractEvents } from '@thirdweb-dev/react';
 
 const YourComponent: React.FC = () => {
   const { contract, isLoading: loadingContract } = useContract(
-    '0x0Aab76D12f0436c9E2C46F0C0F8406F616CeF5cc',
+    '0xBaEB0b96e104E7B067D0Ce32AF1c1E177403d20B',
     'marketplace-v3'
   );
 
