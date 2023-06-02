@@ -41,13 +41,16 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>SOVRN AUCTION</h1>
+        <h1 className={styles.title}>PERIMETER TOWN - A SOVRN AUCTION</h1>
+        <h3 className={styles.title}>Please make sure you are on the ethereum network before bidding</h3>
         <h2>
           <ConnectWallet />
         </h2>
         <Link href="/bids">
          Bidding Log
-        </Link>
+        </Link> 
+        <p></p>
+        <a href={`https://www.sovrn.art/auction`}> Artist Statement</a>
         <p></p>
 
         {!loadingAuction  ? (
@@ -70,7 +73,9 @@ const Home: NextPage = () => {
                       <p>{nft.asset.name} #{nft.asset.id}</p>
                       <a href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View Traits</a>
                       <p></p>
-                      <p>Listing Id#  {listingId}</p>
+                      <p>Listing Id#  {listingId} </p>
+                      <p></p>
+                      <p>Starting Bid {nft.minimumBidCurrencyValue.displayValue} ETH</p>
                       <p></p>
                       <p>End Time: {(new Date(nft.endTimeInSeconds*1000)).toUTCString()}</p>
                       
