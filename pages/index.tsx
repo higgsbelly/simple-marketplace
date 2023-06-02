@@ -65,13 +65,13 @@ const Home: NextPage = () => {
                     <div className={styles.imageContainer}>
                       <MediaRenderer
                         src={nft.asset.image}
-                        height="500px"
-                        width="500px"
+                        height="1000px"
+                        width="1000px"
                       />
                     </div>
                     <div className={styles.textContainer}>
                       <p>{nft.asset.name} #{nft.asset.id}</p>
-                      <a className={styles.aREF} href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View Traits</a>
+                      <a className={styles.aREF} href={`https://opensea.io/assets/ethereum/0xaa4bc994775a0d19ff1c01310191df6521af12dd/${nft.asset.id}`}> View on OpenSea</a>
                       <p></p>
                       <p>Listing Id#  {listingId} </p>
                       <p></p>
